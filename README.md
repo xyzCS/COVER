@@ -46,31 +46,7 @@ COVER/
 
 ## Running COVER
 
-All scripts should be launched from the corresponding `code/` directory. All reported experiments were run on four NVIDIA H200 GPUs; the example commands therefore use `CUDA_VISIBLE_DEVICES=0,1,2,3`.
-
-### Dream-Instruct COVER
-
-```bash
-cd /path/to/COVER_OS/dream_instruct/code
-CUDA_VISIBLE_DEVICES=0,1,2,3 bash ../scripts/run_cover_256.sh
-CUDA_VISIBLE_DEVICES=0,1,2,3 bash ../scripts/run_cover_512.sh
-```
-
-The Dream scripts use the selected balanced hyperparameters for the four tasks: HumanEval, MBPP, GSM8K, and MATH500. Use `ONLY_TASK` to run one task:
-
-```bash
-ONLY_TASK=math500 CUDA_VISIBLE_DEVICES=0,1,2,3 bash ../scripts/run_cover_256.sh
-```
-
-### LLaDA-Base COVER
-
-```bash
-cd /path/to/COVER_OS/llada_base/code
-CUDA_VISIBLE_DEVICES=0,1,2,3 bash ../scripts/run_cover_256.sh
-CUDA_VISIBLE_DEVICES=0,1,2,3 bash ../scripts/run_cover_512.sh
-```
-
-The LLaDA-base scripts use paper-tuned per-task hyperparameters and few-shot settings.
+The LLaDA-Instruct scripts should be launched from `llada_ins/code/`. All reported experiments were run on four NVIDIA H200 GPUs; the example commands therefore use `CUDA_VISIBLE_DEVICES=0,1,2,3`.
 
 ### LLaDA-Instruct COVER
 
