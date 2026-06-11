@@ -4,9 +4,9 @@
 #
 # Final balanced settings from corrected COVER sweeps:
 #   humaneval_instruct: max_unmask=15, tau=0.85, rev=5 -> 54.88, steps=64.84
-#   mbpp_instruct:      max_unmask=15, tau=0.85, rev=2 -> 55.20, steps=29.88
-#   gsm8k_cot:          max_unmask=10, tau=0.90, rev=4 -> 81.05, steps=57.47
-#   math500:            max_unmask=10, tau=0.90, rev=4 -> 47.00, steps=158.09
+#   mbpp_instruct:      max_unmask=15, tau=0.90, rev=1 -> 57.20, steps=33.60
+#   gsm8k_cot:          max_unmask=15, tau=0.90, rev=2 -> 80.21, steps=56.67
+#   math500:            max_unmask=15, tau=0.90, rev=4 -> 45.80, steps=155.20
 #
 # Usage:
 #   cd /storage/home/yzxiang/research/evaluation/COVER/dream_instruct/code
@@ -54,23 +54,23 @@ export PYTHONPATH=".:${PYTHONPATH:-}"
 
 declare -A TAU=(
   [humaneval_instruct]=0.85
-  [mbpp_instruct]=0.85
+  [mbpp_instruct]=0.90
   [gsm8k_cot]=0.90
   [math500]=0.90
 )
 
 declare -A REV=(
   [humaneval_instruct]=5
-  [mbpp_instruct]=2
-  [gsm8k_cot]=4
+  [mbpp_instruct]=1
+  [gsm8k_cot]=2
   [math500]=4
 )
 
 declare -A MAX_UNMASK=(
   [humaneval_instruct]=15
   [mbpp_instruct]=15
-  [gsm8k_cot]=10
-  [math500]=10
+  [gsm8k_cot]=15
+  [math500]=15
 )
 
 run_one() {

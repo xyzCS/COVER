@@ -3,10 +3,10 @@
 # Run Dream-v0-Instruct-7B COVER with best 256-length sweep hyperparameters.
 #
 # Final balanced settings from corrected COVER sweeps:
-#   humaneval_instruct: max_unmask=12, tau=0.90, rev=2 -> 56.10, steps=72.32
+#   humaneval_instruct: max_unmask=15, tau=0.90, rev=2 -> 55.49, steps=71.50
 #   mbpp_instruct:      max_unmask=15, tau=0.85, rev=2 -> 56.80, steps=40.12
 #   gsm8k_cot:          max_unmask=15, tau=0.90, rev=5 -> 78.62, steps=57.51
-#   math500:            max_unmask=10, tau=0.90, rev=2 -> 41.80, steps=113.93
+#   math500:            max_unmask=15, tau=0.95, rev=3 -> 42.20, steps=126.08
 #
 # Usage:
 #   cd /storage/home/yzxiang/research/evaluation/COVER/dream_instruct/code
@@ -56,21 +56,21 @@ declare -A TAU=(
   [humaneval_instruct]=0.90
   [mbpp_instruct]=0.85
   [gsm8k_cot]=0.90
-  [math500]=0.90
+  [math500]=0.95
 )
 
 declare -A REV=(
   [humaneval_instruct]=2
   [mbpp_instruct]=2
   [gsm8k_cot]=5
-  [math500]=2
+  [math500]=3
 )
 
 declare -A MAX_UNMASK=(
-  [humaneval_instruct]=12
+  [humaneval_instruct]=15
   [mbpp_instruct]=15
   [gsm8k_cot]=15
-  [math500]=10
+  [math500]=15
 )
 
 run_one() {

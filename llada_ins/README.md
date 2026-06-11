@@ -63,34 +63,6 @@ results/<model_key>/cover/<task>_<run_tag>/
 
 Each run writes aggregated JSON, sample JSONL, and a task-specific `metrics_<task>.txt` file.
 
-## Paper Settings
-
-Fixed settings:
-
-- `block_length=64`
-- `max_unmask_per_step=15`
-- `temperature=0.0`
-- `tau_draft` is the shared threshold for drafting and Replace/ReMask verification
-- `max_reverify_times` is the per-position re-verification budget
-
-LLaDA-8B-Instruct:
-
-| Dataset | len=256 tau / rev | len=512 tau / rev |
-|---|---:|---:|
-| HumanEval | 0.9 / 2 | 0.8 / 3 |
-| MBPP | 0.7 / 5 | 0.8 / 4 |
-| GSM8K | 0.7 / 5 | 0.7 / 5 |
-| MATH500 | 0.7 / 2 | 0.7 / 3 |
-
-LLaDA-1.5:
-
-| Dataset | len=256 tau / rev | len=512 tau / rev |
-|---|---:|---:|
-| HumanEval | 0.8 / 3 | 0.8 / 5 |
-| MBPP | 0.7 / 4 | 0.8 / 5 |
-| GSM8K | 0.8 / 5 | 0.7 / 5 |
-| MATH500 | 0.7 / 2 | 0.8 / 4 |
-
 ## Implementation Notes
 
 COVER is registered as `LLaDA_cover`. The core implementation is in:
