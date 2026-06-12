@@ -22,8 +22,8 @@ BASE_OUTPUT_PATH="${BASE_OUTPUT_PATH:-${SCRIPT_DIR}/../results/${MODEL_KEY}/sabe
 gen_length="${gen_length:-256}"
 block_length="${block_length:-64}"
 temperature="${temperature:-0.0}"
-n="${n:-1}"
-mu="${mu:-6}"
+declare -A N=([humaneval]="${n_humaneval:-1}" [mbpp]="${n_mbpp:-1}" [gsm8k]="${n_gsm8k:-1}" [math500]="${n_math500:-1}")
+declare -A MU=([humaneval]="${mu_humaneval:-4}" [mbpp]="${mu_mbpp:-6}" [gsm8k]="${mu_gsm8k:-4}" [math500]="${mu_math500:-6}")
 
 export CUDA_VISIBLE_DEVICES="${CUDA_VISIBLE_DEVICES:-0,1,2,3}"
 PYTHON="${PYTHON:-python}"
@@ -33,6 +33,8 @@ cd "${CODE_DIR}"
 
 run_one() {
   local task="$1"
+  local n="${N[$task]}"
+  local mu="${MU[$task]}"
   local run_tag="${model_tag}_saber_len${gen_length}_blk${block_length}_n${n}_mu${mu}"
   local output_path="${BASE_OUTPUT_PATH}/${task}_${run_tag}"
   local gen_kwargs="gen_length=${gen_length},block_length=${block_length},n=${n},mu=${mu},temperature=${temperature}"

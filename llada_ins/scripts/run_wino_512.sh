@@ -24,7 +24,7 @@ block_length="${block_length:-64}"
 temperature="${temperature:-0.0}"
 threshold_back="${threshold_back:-0.9}"
 
-threshold_humaneval="${threshold_humaneval:-0.7}"
+threshold_humaneval="${threshold_humaneval:-0.9}"
 threshold_mbpp="${threshold_mbpp:-0.8}"
 threshold_gsm8k="${threshold_gsm8k:-0.6}"
 threshold_math500="${threshold_math500:-0.7}"

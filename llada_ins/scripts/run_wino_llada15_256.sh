@@ -20,7 +20,7 @@ export PYTHONPATH="${PYTHONPATH:-}:${CODE_DIR}"
 cd "${CODE_DIR}"
 mkdir -p "${BASE_OUTPUT_PATH}"
 
-declare -A THRESHOLD=([humaneval]=0.8 [mbpp]=0.8 [gsm8k]=0.7 [math500]=0.85)
+declare -A THRESHOLD=([humaneval]=0.8 [mbpp]=0.8 [gsm8k]=0.7 [math500]=0.865)
 declare -A THRESHOLD_BACK=([humaneval]=0.9 [mbpp]=0.9 [gsm8k]=0.95 [math500]=0.9)
 declare -A BLOCK_LENGTH=([humaneval]=64 [mbpp]=64 [gsm8k]=64 [math500]=64)
 

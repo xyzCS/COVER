@@ -22,9 +22,12 @@ BASE_OUTPUT_PATH="${BASE_OUTPUT_PATH:-${SCRIPT_DIR}/../results/${MODEL_KEY}/wino
 gen_length="${gen_length:-256}"
 block_length="${block_length:-64}"
 temperature="${temperature:-0.0}"
-threshold_back="${threshold_back:-0.9}"
+threshold_back_humaneval="${threshold_back_humaneval:-0.95}"
+threshold_back_mbpp="${threshold_back_mbpp:-0.9}"
+threshold_back_gsm8k="${threshold_back_gsm8k:-0.9}"
+threshold_back_math500="${threshold_back_math500:-0.9}"
 
-threshold_humaneval="${threshold_humaneval:-0.7}"
+threshold_humaneval="${threshold_humaneval:-0.8}"
 threshold_mbpp="${threshold_mbpp:-0.8}"
 threshold_gsm8k="${threshold_gsm8k:-0.75}"
 threshold_math500="${threshold_math500:-0.7}"
@@ -45,10 +48,22 @@ threshold_for_task() {
   esac
 }
 
+threshold_back_for_task() {
+  case "$1" in
+    humaneval) echo "${threshold_back_humaneval}" ;;
+    mbpp) echo "${threshold_back_mbpp}" ;;
+    gsm8k) echo "${threshold_back_gsm8k}" ;;
+    math500) echo "${threshold_back_math500}" ;;
+    *) echo "Unknown task $1" >&2; exit 1 ;;
+  esac
+}
+
 run_one() {
   local task="$1"
   local threshold
+  local threshold_back
   threshold="$(threshold_for_task "${task}")"
+  threshold_back="$(threshold_back_for_task "${task}")"
   local run_tag="${model_tag}_wino_len${gen_length}_blk${block_length}_th${threshold}_thb${threshold_back}"
   local output_path="${BASE_OUTPUT_PATH}/${task}_${run_tag}"
   local gen_kwargs="gen_length=${gen_length},block_length=${block_length},temperature=${temperature},threshold=${threshold},threshold_back=${threshold_back}"

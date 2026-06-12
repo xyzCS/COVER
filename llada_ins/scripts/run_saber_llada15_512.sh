@@ -21,8 +21,8 @@ export PYTHONPATH="${PYTHONPATH:-}:${CODE_DIR}"
 cd "${CODE_DIR}"
 mkdir -p "${BASE_OUTPUT_PATH}"
 
-declare -A N=([humaneval]=1 [mbpp]=2 [gsm8k]=2 [math500]=2)
-declare -A MU=([humaneval]=6 [mbpp]=4 [gsm8k]=8 [math500]=8)
+declare -A N=([humaneval]=1 [mbpp]=1 [gsm8k]=2 [math500]=1)
+declare -A MU=([humaneval]=6 [mbpp]=6 [gsm8k]=8 [math500]=4)
 
 run_one() {
   local task="$1"
