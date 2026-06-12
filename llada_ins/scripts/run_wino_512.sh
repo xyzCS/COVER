@@ -30,8 +30,7 @@ threshold_gsm8k="${threshold_gsm8k:-0.6}"
 threshold_math500="${threshold_math500:-0.7}"
 
 export CUDA_VISIBLE_DEVICES="${CUDA_VISIBLE_DEVICES:-0,1,2,3}"
-PYTHON="${PYTHON:-/home/yzxiang/miniconda3/envs/dllm/bin/python}"
-export PATH="/home/yzxiang/miniconda3/envs/dllm/bin:${PATH}"
+PYTHON="${PYTHON:-python}"
 export PYTHONPATH="${PYTHONPATH:-}:${CODE_DIR}"
 
 cd "${CODE_DIR}"

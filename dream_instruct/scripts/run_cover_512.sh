@@ -9,7 +9,7 @@
 #   math500:            max_unmask=15, tau=0.90, rev=4 -> 45.80, steps=155.20
 #
 # Usage:
-#   cd /storage/home/yzxiang/research/evaluation/COVER/dream_instruct/code
+#   cd /path/to/COVER_OS/dream_instruct/code
 #   CUDA_VISIBLE_DEVICES=0,1,2,3 bash ../scripts/run_cover_best_512.sh
 #
 # Optional:
@@ -46,8 +46,7 @@ VERSION2_DEBUG=False
 export HF_DATASETS_TRUST_REMOTE_CODE=true
 export HF_ALLOW_CODE_EVAL=1
 export CUDA_VISIBLE_DEVICES="${CUDA_VISIBLE_DEVICES:-0,1,2,3}"
-PYTHON="${PYTHON:-/home/yzxiang/miniconda3/envs/dllm/bin/python}"
-export PATH="/home/yzxiang/miniconda3/envs/dllm/bin:${PATH}"
+PYTHON="${PYTHON:-python}"
 
 cd "${CODE_DIR}"
 export PYTHONPATH=".:${PYTHONPATH:-}"

@@ -2,7 +2,7 @@ import logging
 import os
 import time
 from datetime import timedelta
-from typing import Dict, List, Literal, Optional, Tuple, Union, TypeVar
+from typing import Any, Dict, List, Literal, Optional, Tuple, Union, TypeVar
 import torch
 import torch.nn.functional as F
 import numpy as np
@@ -602,12 +602,45 @@ class LLaDA(TemplateLM):
         autogptq: Optional[Union[bool, str]] = False,
         gptqmodel: Optional[bool] = False,
         gguf_file: Optional[str] = None,
-        **kwargs,
+        **kwargs: Any
     ) -> None:
-        raise NotImplementedError(
-            "The generic LLaDA model path is not included in this COVER reproduction package. "
-            "Use --model LLaDA_cover."
+        if autogptq or gptqmodel:
+            raise NotImplementedError("Quantization options are not implemented for this custom class.")
+
+        from dllm_eval.models.cover.modeling_llada_kv_cover import LLaDAModelLM
+
+        model_dtype = get_dtype(dtype)
+        eval_logger.info(f"Loading original LLaDA baseline model with dtype: {model_dtype}")
+
+        model_kwargs = kwargs if kwargs else {}
+        if not parallelize:
+            model_kwargs.update(
+                self._get_accelerate_args(
+                    parallelize=parallelize,
+                    gpus=gpus,
+                    max_memory_per_gpu=max_memory_per_gpu,
+                    max_cpu_memory=max_cpu_memory,
+                    offload_folder=offload_folder,
+                )
+            )
+
+        self._model = LLaDAModelLM.from_pretrained(
+            pretrained,
+            trust_remote_code=True,
+            torch_dtype=model_dtype,
+            low_cpu_mem_usage=True,
+            **model_kwargs,
         )
+
+        if peft:
+            from peft import PeftModel
+
+            eval_logger.info(f"Loading PEFT model from {peft}")
+            self._model = PeftModel.from_pretrained(self._model, peft, torch_dtype=model_dtype)
+
+        if not parallelize:
+            self._model = self._model.to(self.device)
+        self._model.eval()
 
     def _create_tokenizer(
         self,

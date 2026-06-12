@@ -36,7 +36,7 @@ The original runs used CUDA 12.6, cuDNN 9.7, NVIDIA driver 570.x, and 4 NVIDIA H
 Run all four benchmarks with LLaDA-8B-Instruct:
 
 ```bash
-cd /storage/home/yzxiang/research/evaluation/COVER/llada_ins
+cd /path/to/COVER_OS/llada_ins
 CUDA_VISIBLE_DEVICES=0,1,2,3 bash scripts/run_cover_256.sh
 CUDA_VISIBLE_DEVICES=0,1,2,3 bash scripts/run_cover_512.sh
 ```

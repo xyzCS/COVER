@@ -13,8 +13,7 @@ gen_length="${gen_length:-256}"
 temperature="${temperature:-0.0}"
 
 export CUDA_VISIBLE_DEVICES="${CUDA_VISIBLE_DEVICES:-0,1,2,3}"
-PYTHON="${PYTHON:-/home/yzxiang/miniconda3/envs/dllm/bin/python}"
-export PATH="/home/yzxiang/miniconda3/envs/dllm/bin:${PATH}"
+PYTHON="${PYTHON:-python}"
 export PYTHONPATH="${PYTHONPATH:-}:${CODE_DIR}"
 
 cd "${CODE_DIR}"
