@@ -119,7 +119,7 @@ The LLaDA-Instruct WINO/Saber scripts automatically compute and print the ratio 
 
 ## License
 
-This code is released under the [MIT License](LICENSE). If you use or build on it, please keep the copyright notice and cite the paper below. Third-party components keep their original licenses (see [LICENSE](LICENSE)).
+This code is released under the [MIT License](LICENSE). If you use or build on it, please keep the copyright notice and cite the paper below. Third-party components keep their original licenses (see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)).
 
 ## Citation
 
