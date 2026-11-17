@@ -9,4 +9,4 @@ under its original license:
 - Dream (DreamLM / HKU NLP), Apache License 2.0: Dream model code (modeling_dream.py,
   configuration_dream.py, generation_utils.py)
 
-The COVER-specific modifications to these files are covered by the MIT License above.
+The COVER-specific modifications to these files are covered by the MIT License in [LICENSE](LICENSE).
