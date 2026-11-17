@@ -117,6 +117,10 @@ The LLaDA-Instruct WINO/Saber scripts automatically compute and print the ratio 
 <output_path>/flip_flop_ratio.txt
 ```
 
+## License
+
+This code is released under the [MIT License](LICENSE). If you use or build on it, please keep the copyright notice and cite the paper below. Third-party components keep their original licenses (see [LICENSE](LICENSE)).
+
 ## Citation
 
 If you use this code, please cite:
